@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+<div class="container">
+    {% block section %}
+    <div class="card text-white bg-primary mb-3"style="max-width: 100rem;">
+        <div class="card-header" style="background-color: rgb(27, 155, 155)">
+         <h2>Adoptantes</h2>
+        </div>
+        </div>
+    <hr>
+{% endblock section %}
+{% block maincontent %}
+
+    {% for p in object_list.all %}
+    <div class="col-md-4 well" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR3ewcXfx5NvYqc4T88aUlk6BxiIzzUsuU6qTN6CO3i2fkdrGq)">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="background-color: rgb(67, 185, 185)">
+                <h3 class="panel-title" style="background-color: rgb(67, 185, 185)">{{ p.nombre }}</h3>
+                
+            </div>
+            <div class="panel-body">
+               <center> <a href="{% url 'adoptante-detail' p.id %}">
+                  Detalles 
+                </a></center>
+            </div>
+            
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock maincontent %}

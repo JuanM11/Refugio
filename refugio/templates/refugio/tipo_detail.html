@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<div class="container">
+    {% block section %}
+    <div class="card text-white bg-primary mb-3" >
+        <div class="card-header" style="background-color: rgb(67, 185, 185)">
+            <h2>{{ object.nombre }}</h2>
+        </div>
+        </div>
+    <hr>
+
+{% endblock section %}
+
+
+{% block maincontent %}
+<div>
+    <table border="1px">
+        <tr>
+            {% for p in object.mascota_set.all %}
+                <td>
+                    
+                    
+                   <center><div style="background-color: rgb(61, 199, 199)"><b style="color: white">{{ p.nombre }}</b></div></center> 
+                  
+                        <a href="{% url 'mascota-detail' p.id %}">
+                            <img src="{% static p.foto.url %}" style="width:200px;height:200px;"/>
+                        </a>
+                        <div class="panel-footer">
+                                <center><a href="{% url 'adoptante-create' %}"><button type="submit" style="background-color:darkslategray" class="btn btn-primary" onclick="adoptar()">Adoptar</button></a> </center>
+                                <script type="text/javascript">
+                                function adoptar()
+                                {
+                                    alert("Felicitaciones {{user.username}} diligencia un pequeño formato y te contactaremos para concretar la adopción") 
+                                    
+                                }
+                               </script>
+                            </div>
+                    </div>
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+{% endblock maincontent %}

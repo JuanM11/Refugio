@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+   <h2>
+       {{ object.nombre }}
+      
+      
+         <a href="{% url 'adoptante-list' %}"> (Adoptante) </a> 
+      
+    </h2>
+    
+    <a href="{% url "adoptante-update" object.id %}">Editar</a> 
+    &nbsp &nbsp
+    <a href="{% url "adoptante-delete" object.id %}">Eliminar</a>
+   <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div>
+                
+        <br>
+        <div>
+                <table border="1px" style="width:100%">
+                    <tr>
+                        <th style="text-align: center">Nombre</th>
+                        <th style="text-align: center">Edad</th>
+                        <th style="text-align: center">Celular</th>
+                        <th style="text-align: center">Email</th>
+                        <th style="text-align: center">Dirección</th>
+                        <th style="text-align: center">Mascota</th>
+                     </tr>
+                     <tr>
+                        <th style="text-align: center">{{object.nombre}}</th>
+                        <th style="text-align: center">{{object.edad}}</th>
+                        <th style="text-align: center">{{object.cel}}</th>
+                        <th style="text-align: center">{{object.email}}</th>
+                        <th style="text-align: center">{{object.direccion}}</th>
+                        {% if object.mascota_a_adoptar %}
+                        <th style="text-align: center">{{object.mascota_a_adoptar}}</th>
+                        {% else %}
+                        <th style="text-align: center">Qué esperas para adoptar a un amigo</th>
+                        {% endif %}
+                     </tr>
+                 </table>
+             </div>    
+    </div>
+     
+     
+    </div>
+
+{% endblock maincontent %} 

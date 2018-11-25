@@ -1,0 +1,34 @@
+{% extends 'adminlte/base.html' %}
+{% block title %}Refugio{% endblock %}
+{% block content %}
+
+    <div class="container" >
+        {% block section %}
+        <div class="card text-white bg-primary mb-3" style="background-color: rgb(27, 155, 155)">
+            <div class="card-header" style="background-color: rgb(27, 155, 155)">
+             <h2>Mascotas</h2>
+            </div>
+            </div>
+        <hr>
+        {% endblock section %}
+        
+    </div>
+    <div class="container" >
+        {% block maincontent %}
+
+        <div class="card text-center" >
+            <div class="card-header" style="background-color: rgb(27, 155, 155)">
+             
+            </div>
+            <div class="card-body" >
+                    {% if request.user.is_authenticated %}
+                                        
+              <h5 class="card-title">Bienvenido <b>"{{user.username}}"</b> a Pata Amiga</h5>
+                    {% endif %}
+              <p class="card-text">Te invitamos a encontrar a tu nuevo amigo de cuatro patas</p>
+              <a href="{% url 'mascota-list' %}" class="btn btn-primary" style="background-color: rgb(66, 189, 189)">Ver mascotas</a>
+            </div>
+          </div>
+        {% endblock maincontent %}
+    </div>
+{% endblock %}

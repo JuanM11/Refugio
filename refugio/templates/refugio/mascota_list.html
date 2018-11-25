@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+<div class="container">
+    {% block section %}
+    <div class="card text-white bg-primary mb-3"style="max-width: 100rem;">
+        <div class="card-header" style="background-color: rgb(27, 155, 155)">
+         <h2>Mascotas</h2>
+        </div>
+        </div>
+    <hr>
+{% endblock section %}
+{% block maincontent %}
+
+    {% for p in object_list.all %}
+    <div class="col-md-4 well" >
+        <div class="panel panel-primary" style="background-image: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17865154.jpg)">
+            <div class="panel-heading" style="background-color: rgb(67, 185, 185)">
+                <h3 class="panel-title" style="background-color: rgb(67, 185, 185)">{{ p.nombre }}</h3>
+            </div>
+            <div class="panel-body">
+                <a href="{% url 'mascota-detail' p.id %}">
+                   <center><img src="{% static p.foto.url %}" style="width:200px;height:200px;" /></center> 
+                </a>
+            </div>
+            <div class="panel-footer">
+                    
+                    <center><a href="{% url 'adoptante-create' %}"><button type="submit" style="background-color:darkslategray" class="btn btn-primary" onclick="adoptar()">Adoptar</button></a> </center>
+                    <script type="text/javascript">
+                    function adoptar()
+                    {
+                        alert("Felicitaciones {{user.username}} diligencia un pequeño formato y te contactaremos para concretar la adopción") 
+                        
+                    }
+                   </script>
+                  
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock maincontent %}

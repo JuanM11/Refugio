@@ -1,0 +1,42 @@
+<aside class="main-sidebar" style="background-image: url(https://png2.kisspng.com/20180409/jfw/kisspng-dog-paw-cat-clip-art-paw-prints-5acbd8aab40e13.3818705515233087147375.png);background-size: 150%">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        {% block nav_links_ul %}
+        <ul class="sidebar-menu">
+            {% block nav_links_outer %}
+            <li class="header">{% block nav_heading %}MENU DE NAVEGACION{% endblock %}</li>
+            {% block nav_links %}
+                
+                <li>
+                    <a href="{% url 'tipo' %}">
+                        <i class="fa fa-image" style="color:white"></i> <span style="color: white">Tipo</span>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mascota-list' %}">
+                            <i class="fa fa-camera-retro" style="color: white"></i> <span style="color: white">Mascotas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mascota-create' %}">
+                            <i class="fa fa-camera-retro" style="color: white"></i> <span style="color: white">Crear Mascota</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adoptante-list' %}">
+                            <i class="fa fa-camera-retro" style="color: white"></i> <span style="color: white">Adoptantes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adoptante-create' %}">
+                            <i class="fa fa-camera-retro" style="color: white"></i> <span style="color: white">Crear Adoptante</span>
+                        </a>
+                    </li>
+                
+            {% endblock nav_links %}
+            {% endblock nav_links_outer %}
+        </ul>
+        {% endblock nav_links_ul %}
+    </section>
+    <!-- /.sidebar -->
+</aside>

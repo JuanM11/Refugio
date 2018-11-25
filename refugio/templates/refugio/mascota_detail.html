@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+   <h2>
+       {{ object.nombre }}
+      
+       {% if object.tipo_id %}
+         ( <a href="{% url "tipo-detail" object.tipo_id %}">
+             {{ object.tipo }}
+           </a> )
+       {% endif %}
+    </h2>
+    
+    <a href="{% url "mascota-update" object.id %}">Editar</a> 
+    &nbsp &nbsp
+    <a href="{% url "mascota-delete" object.id %}">Eliminar</a>
+   <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div >
+        <div align="center">
+              <img src="{% static object.foto.url %}" style="width:550px;height:520px;" />
+              
+        </div>
+        
+        <br>
+        <div>
+                <table border="1px" style="width:100%">
+                    <tr>
+                        <th style="text-align: center">Nombre</th>
+                        <th style="text-align: center">Sexo</th>
+                        <th style="text-align: center">Edad</th>
+                        <th style="text-align: center">Raza</th>
+                        <th style="text-align: center">Estado</th>
+                        <th style="text-align: center">Adoptante</th>
+                     </tr>
+                     <tr>
+                        <th style="text-align: center">{{object.nombre}}</th>
+                        <th style="text-align: center">{{object.sexo}}</th>
+                        <th style="text-align: center">{{object.edad}}</th>
+                        <th style="text-align: center">{{object.raza}}</th>
+                
+                
+                        {% if object.adoptado == True %}
+                        <th style="text-align: center">Adoptado</th>
+                        {% else %}
+                        <th style="text-align: center">Disponible</th>
+                        {% endif %}
+                        {% if object.adoptado == True %}
+                        <th style="text-align: center">{{user.username}}</th>
+                        {% else %}
+                        <th style="text-align: center">Qué esperas... puedes ser Tú</th>
+                        {% endif %}
+                  
+                     </tr>
+                 </table>
+             </div>    
+    </div>
+     
+     
+    </div>
+
+{% endblock maincontent %} 

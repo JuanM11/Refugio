@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class='btn' href="{% url 'mascota-list' %}">Cancelar</a>
+    </form>
+{% endblock maincontent%}

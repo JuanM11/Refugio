@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block section %}
+<div class="card text-white bg-primary mb-3" style="background-color: rgb(27, 155, 155)">
+    <div class="card-header" style="background-color: rgb(27, 155, 155)">
+     <h2>Adoptantes</h2>
+    </div>
+    </div>
+<hr>
+{% endblock section %}
+{% block maincontent %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class='btn' href="{% url 'adoptante-list' %}">Cancelar</a>
+    </form>
+{% endblock maincontent%}
