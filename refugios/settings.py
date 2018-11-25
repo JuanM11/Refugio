@@ -40,15 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration',
+    'refugio',
     'django_adminlte',
     'django_adminlte_theme',
     'django.contrib.sites',
-    
+    'registration', #should be immediately above 'django.contrib.admin'
     'rest_framework',
     'social_django',
     'social.apps.django_app.default',
-    'refugio',
 
 # ...other installed appl
 ]
