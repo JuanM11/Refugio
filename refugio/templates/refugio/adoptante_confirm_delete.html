@@ -2,8 +2,8 @@
 
 {% block maincontent %}
     <form action="" method="post">{% csrf_token %}
-        <p>No se puede eliminar a "{{ object.nombre }}" esta sujeto a llave Foranea </p>
-        
+        <p>Eliminar a "{{ object.nombre }}"?</p>
+        <input type="submit" value="Confirmar" />
         <a class='btn' href="{% url 'adoptante-list' %}">Cancelar</a>
     </form>
 {% endblock maincontent %}

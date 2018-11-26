@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-
-{% block maincontent %}
-    <form action="" method="post">{% csrf_token %}
-        <p>Adoptar a "{{ object.nombre }}"?</p>
-        <input type="submit" value="Confirmar" />
-        <a class='btn' href="{% url 'mascota-list' %}">Cancelar</a>
-    </form>
-{% endblock maincontent %}

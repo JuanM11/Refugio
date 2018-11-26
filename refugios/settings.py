@@ -73,63 +73,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware' ,
 ]
-SOCIAL_AUTH_PIPELINE = (
-    # recibe vía backend y uid las instancias de social_user y user
-    'social.pipeline.social_auth.social_details',
 
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-
-    # Recibe según user.email la instancia del usuario y lo reemplaza con uno que recibió anteriormente
-    'social.pipeline.social_auth.social_user',
-
-    # Trata de crear un username válido según los datos que recibe
-    'social.pipeline.user.get_username',
-
-    # Crea un usuario nuevo si uno todavía no existe
-    'social.pipeline.user.create_user',
-
-    # Trata de conectar las cuentas
-    'social.pipeline.social_auth.associate_user',
-
-    # Recibe y actualiza social_user.extra_data
-    'social.pipeline.social_auth.load_extra_data',
-
-    # Actualiza los campos de la instancia user con la información que obtiene vía backend
-    'social.pipeline.user.user_details',
-)
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time',
-        ],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.12',
-    }}
 AUTHENTICATION_BACKENDS=(
     'django.contrib.auth.backends.ModelBackend',
-    'social.backends.facebook.FacebookAppOAuth2',
-    'social.backends.facebook.FacebookOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend',
-    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.open_id.OpenIdAuth' ,
+    'social_core.backends.google.GoogleOpenId' ,
+    'social_core.backends.google.GoogleOAuth2' ,
+    'social_core.backends.google.GoogleOAuth' ,
+         
+)
+TEMPLATE_CONTEXT_PROCESSORS = (
     
-    
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
 )
 ROOT_URLCONF = 'refugios.urls'
 
@@ -159,7 +116,7 @@ WSGI_APPLICATION = 'refugios.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'zonaamiga',
+        'NAME':'prueba5',
         'USER':'postgres',
         'PASSWORD':'123',
         'HOST':'localhost',
@@ -185,7 +142,31 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+SOCIAL_AUTH_PIPELINE = (
+    # recibe vía backend y uid las instancias de social_user y user
+    'social.pipeline.social_auth.social_details',
 
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+
+    # Recibe según user.email la instancia del usuario y lo reemplaza con uno que recibió anteriormente
+    'social.pipeline.social_auth.social_user',
+
+    # Trata de crear un username válido según los datos que recibe
+    'social.pipeline.user.get_username',
+
+    # Crea un usuario nuevo si uno todavía no existe
+    'social.pipeline.user.create_user',
+
+    # Trata de conectar las cuentas
+    'social.pipeline.social_auth.associate_user',
+
+    # Recibe y actualiza social_user.extra_data
+    'social.pipeline.social_auth.load_extra_data',
+
+    # Actualiza los campos de la instancia user con la información que obtiene vía backend
+    'social.pipeline.user.user_details',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -205,17 +186,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media/fotos')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
 
 STATICFILES_DIRS = (
  os.path.join(BASE_DIR, 'media'),
-) 
+)
 
-SOCIAL_AUTH_LOGIN_REDIRECTURL='/'
-SOCIAL_AUTH_FACEBOOK_KEY='495733220939100'
-SOCIAL_AUTH_FACEBOOK_SECRET='d06cd4c93952ecdd4e073aedb4c5d3b1'
-SOCIAL_AUTH_FACEBOOK_SCOPE =['email']
-
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_LOGIN_REDIRECT_URL='/'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '945199752428-lqe77kgkij2ts29rrvvkrcgii46plujj.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Z_BBtbBUo007DuBCT5_KSNjK'
 
 LOGGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
@@ -224,6 +205,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'frameworksumariana@gmail.com'
 EMAIL_HOST_PASSWORD = 'ingsis604'
 EMAIL_PORT =  587
-DEFAULT_FROM_EMAIL = ' you@gmail.com'
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+

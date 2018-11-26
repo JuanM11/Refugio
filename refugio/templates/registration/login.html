@@ -291,18 +291,11 @@ input[type=text]:placeholder {
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-        
-        <a href="{% url 'social:begin' 'facebook' %}">Ingresar con FACEBOOK<a class="btn btn-social-icon btn-facebook">
-            <span class="fa fa-facebook"></span>
-          </a>
-        </a>
-        <br>
-        <a href="{% url 'social:begin' 'twitter' %}">Ingresar con TWITEER<a class="btn btn-social-icon btn-twiteer">
-            <span class="fa fa-twitter"></span>
-          </a>
-        <br>
-      <a class="underlineHover" href="/accounts/register">Sign Up</a>
-     
+       
+      <a href="{% url 'social:begin' 'google-oauth2' %}"><img src="https://hungerstation.com/assets/operation_portal/google-login-955ad5996d4c8dcc716df9cce96ae355bf0aadd9af1f094a5f45c8d2f4430489.png", style="width: 50%;height: 50%"></a>
+         <br>
+      <a class="underlineHover" href="/accounts/register">Registrarse</a>
+      
     </div>
 
   </div>

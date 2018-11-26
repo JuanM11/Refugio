@@ -4,13 +4,10 @@ from refugio.models import Tipo, Mascota,Adoptante
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
-
 from django.contrib.auth.decorators import login_required
-
 from django.views.generic.edit import UpdateView, CreateView, DeleteView 
 from rest_framework import viewsets
 from .serializer import TipoSerializer, MascotaSerializer, AdoptanteSerializer
-from django.contrib.auth.models import User
 
 
 
@@ -48,8 +45,7 @@ class MascotaUpdate(UpdateView):
 @method_decorator(login_required, name='dispatch')
 class MascotaCreate(CreateView):
     model = Mascota
-    fields = '__all__'
-	
+    fields = ('adoptante','tipo','nombre','sexo','edad_aproximada_años','raza','foto','adoptado')	
 @method_decorator(login_required, name='dispatch')
 class MascotaDelete(DeleteView):
     model = Mascota
@@ -79,6 +75,7 @@ class AdoptanteDelete(DeleteView):
     model = Adoptante
     success_url = reverse_lazy('adoptante-list')
 
+#api
 class TipoList(viewsets.ModelViewSet):
 	queryset=Tipo.objects.all()
 	serializer_class=TipoSerializer
@@ -91,6 +88,7 @@ class AdoptanteList(viewsets.ModelViewSet):
     queryset = Adoptante.objects.all()
     serializer_class = AdoptanteSerializer
 
+#base
 @login_required()
 def base(request):
     return render(request, 'base.html')
