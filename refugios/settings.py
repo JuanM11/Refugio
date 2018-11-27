@@ -116,7 +116,7 @@ WSGI_APPLICATION = 'refugios.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'prueba5',
+        'NAME':'prueba8',
         'USER':'postgres',
         'PASSWORD':'123',
         'HOST':'localhost',
