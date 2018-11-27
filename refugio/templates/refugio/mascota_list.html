@@ -19,12 +19,12 @@
             </div>
             <div class="panel-body">
                 <a href="{% url 'mascota-detail' p.id %}">
-                   <img src="{% static p.foto.url %}" style="width:200px;height:200px;" /> 
+                <center>  <img src="{% static p.foto.url %}" style="width:200px;height:200px;" /> </center> 
                 </a>
             </div>
             <div class="panel-footer">
                     
-                    <a href="{% url 'adoptante-create' %}"><button type="submit" style="background-color:darkslategray" class="btn btn-primary" onclick="adoptar()">Adoptar</button></a> 
+                <center>   <a href="{% url 'adoptante-create' %}"><button type="submit" style="background-color:darkslategray" class="btn btn-primary" onclick="adoptar()">Adoptar</button></a> </center> 
                     <script type="text/javascript">
                     function adoptar()
                     {

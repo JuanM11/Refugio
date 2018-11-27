@@ -14,7 +14,7 @@
 
 
 {% block maincontent %}
-<div>
+<div >
     <table border="1px">
         <tr>
             {% for p in object.mascota_set.all %}
@@ -26,7 +26,7 @@
                         <a href="{% url 'mascota-detail' p.id %}">
                             <img src="{% static p.foto.url %}" style="width:200px;height:200px;"/>
                         </a>
-                        <div class="panel-footer">
+                        <div class="panel-footer" style="background-image: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17865154.jpg)">
                                 <center><a href="{% url 'adoptante-create' %}"><button type="submit" style="background-color:darkslategray" class="btn btn-primary" onclick="adoptar()">Adoptar</button></a> </center>
                                 <script type="text/javascript">
                                 function adoptar()

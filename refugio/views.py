@@ -75,7 +75,7 @@ class AdoptanteDelete(DeleteView):
     model = Adoptante
     success_url = reverse_lazy('adoptante-list')
 
-#api
+#api rest_framework
 class TipoList(viewsets.ModelViewSet):
 	queryset=Tipo.objects.all()
 	serializer_class=TipoSerializer
